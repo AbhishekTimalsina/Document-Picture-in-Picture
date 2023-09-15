@@ -19,6 +19,7 @@
 }
 .stopwatch-wrapper {
   position: relative;
+  margin-bottom: 30px;
 }
 .stopwatch {
   display: flex;
@@ -111,6 +112,15 @@
 .reset {
   transform: translate(calc(-50% + var(--button-width) + 10px), 50%);
 }
+.pip-mode {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+}
+.pip-mode img {
+  width: 60px;
+  cursor: pointer;
+}
 
 @media (max-width: 1200px) {
   * {
@@ -145,5 +155,8 @@
   }
   .timer-button {
     font-size: 0.8rem;
+  }
+  .pip-mode img {
+    width: 44px;
   }
 }
