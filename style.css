@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: "Inter", sans-serif;
+  --dot-size: 8px;
+  --time-width: 75px;
+  --button-width: 50px;
+}
+.container {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #02acc3;
+  position: relative;
+}
+.stopwatch-wrapper {
+  position: relative;
+}
+.stopwatch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: #fff;
+  width: 35vw;
+  min-height: 200px;
+  height: 20vh;
+  border-radius: 16px;
+  box-shadow: 0px 0px 12px #21828f;
+}
+.hour,
+.minute,
+.seconds {
+  color: #0e1013;
+  font-size: 6.2rem;
+  font-weight: 300;
+  position: relative;
+  width: var(--time-width);
+}
+
+.hour::after,
+.minute::after,
+.seconds::after {
+  position: absolute;
+  color: gray;
+  font-size: 16px;
+  font-weight: 300;
+  top: 90%;
+
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 15px;
+}
+.hour::after {
+  content: "Hour";
+}
+.minute::after {
+  content: "Minute";
+}
+.seconds::after {
+  content: "Seconds";
+}
+.bubble {
+  position: relative;
+  height: 100%;
+}
+.bubble::before {
+  content: "";
+  position: absolute;
+  height: var(--dot-size);
+  width: var(--dot-size);
+  border-radius: 50%;
+  background-color: #c9c9c9;
+  top: 45%;
+}
+.bubble::after {
+  content: "";
+  position: absolute;
+  height: var(--dot-size);
+  width: var(--dot-size);
+  border-radius: 50%;
+  background-color: #c9c9c9;
+  top: 55%;
+}
+
+.timer-button {
+  position: absolute;
+  bottom: 0;
+  font-size: 1rem;
+  height: var(--button-width);
+  width: var(--button-width);
+  padding: 3px;
+  border: none;
+  border-radius: 50%;
+  background-color: #037ec2;
+  color: white;
+  box-shadow: 0px 0px 3px #7c7c7ca1;
+  cursor: pointer;
+  left: 50%;
+}
+.start {
+  transform: translate(calc(-50% - var(--button-width) - 10px), 50%);
+}
+.pause {
+  transform: translate(-50%, 50%);
+}
+.reset {
+  transform: translate(calc(-50% + var(--button-width) + 10px), 50%);
+}
+
+@media (max-width: 1200px) {
+  * {
+    --time-width: 40px;
+    --dot-size: 4px;
+  }
+  .stopwatch {
+    gap: 15px;
+  }
+  .hour,
+  .minute,
+  .seconds {
+    font-size: 4rem;
+    width: auto;
+  }
+}
+
+@media (max-width: 750px) {
+  * {
+    --button-width: 40px;
+  }
+  .stopwatch {
+    min-height: auto;
+    height: fit-content;
+    width: fit-content;
+    padding: 40px 40px;
+  }
+  .hour::after,
+  .minute::after,
+  .seconds::after {
+    font-size: 10px;
+  }
+  .timer-button {
+    font-size: 0.8rem;
+  }
+}
