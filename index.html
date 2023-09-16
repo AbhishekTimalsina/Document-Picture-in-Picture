@@ -14,22 +14,27 @@
   </head>
   <body>
     <div class="container">
-      <div class="stopwatch-wrapper">
-        <div class="stopwatch">
-          <p class="hour">00</p>
-          <span class="bubble"></span>
-          <p class="minute">00</p>
-          <span class="bubble"></span>
-          <p class="seconds">00</p>
+      <span class="pip-text">PIP mode is active</span>
+      <div class="pip-container">
+        <div class="stopwatch-wrapper">
+          <div class="stopwatch">
+            <p class="hour">00</p>
+            <span class="bubble"></span>
+            <p class="minute">00</p>
+            <span class="bubble"></span>
+            <p class="seconds">00</p>
+          </div>
+          <button class="timer-button start">Start</button>
+          <button class="timer-button pause">Pause</button>
+          <button class="timer-button reset">Reset</button>
         </div>
-        <button class="timer-button start">Start</button>
-        <button class="timer-button pause">Pause</button>
-        <button class="timer-button reset">Reset</button>
-      </div>
-      <div class="pip-mode">
-        <img src="./img/pip.png" />
       </div>
     </div>
+
+    <button class="pip-button">
+      <img src="./img/pip.png" />
+    </button>
     <script src="./script.js"></script>
+    <script src="./PIP.js"></script>
   </body>
 </html>

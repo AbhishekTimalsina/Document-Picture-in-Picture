@@ -6,12 +6,14 @@ const pauseBtn = document.querySelector(".pause");
 const resetBtn = document.querySelector(".reset");
 
 let intervalId;
+let isRunning = false;
 let h = 0;
 let m = 0;
 let s = 0;
 
 startBtn.addEventListener("click", stopWatch);
 function stopWatch() {
+  if (isRunning) return;
   intervalId = setInterval(() => {
     s++;
     if (s >= 60) {
@@ -26,12 +28,15 @@ function stopWatch() {
     minute.textContent = pad(m);
     seconds.textContent = pad(s);
   }, 1000);
+  isRunning = true;
 }
 pauseBtn.addEventListener("click", function () {
+  isRunning = false;
   clearInterval(intervalId);
 });
 resetBtn.addEventListener("click", function () {
   h = s = m = 0;
+  isRunning = false;
 
   hour.textContent = pad(h);
   minute.textContent = pad(m);
