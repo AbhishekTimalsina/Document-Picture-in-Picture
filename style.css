@@ -10,9 +10,13 @@
 }
 body {
   background-color: #02acc3;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .container {
-  min-height: 100vh;
+  margin-top: auto;
   min-width: 100vw;
   display: flex;
   justify-content: center;
@@ -142,6 +146,18 @@ body {
 .pip-button img {
   width: 60px;
   cursor: pointer;
+}
+footer {
+  margin-top: auto;
+  padding: 2px;
+  background: white;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+footer a {
+  font-size: 12px;
+  text-decoration: none;
 }
 
 @media (max-width: 1200px) {
