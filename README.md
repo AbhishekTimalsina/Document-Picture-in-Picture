@@ -146,7 +146,7 @@ pipWindow.addEventListener("pagehide", function () {
 });
 ```
 
-### Closing a PIP window if they click on the pipButton
+### Closing a PIP window if clicked on the pipButton
 
 If the pipWindow is not active the documentPictureInPicture.window value is null. However if it is active then it will have the value of the pipWindow object. Which we can use to check if the window is active and apply the .close() method.
 
