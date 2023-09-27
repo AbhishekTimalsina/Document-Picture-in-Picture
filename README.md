@@ -26,7 +26,7 @@ In the PIP.js file we select the button and add event listener to listen for a c
 
 ```javascript
 let pipBtn = document.querySelector(".pip-button");
-let pipContainer = document.querySelector(".pip-container");
+let timer = document.querySelector(".stopwatch-container");
 let container = document.querySelector(".container");
 
 pipBtn.addEventListener("click", async function () {
@@ -36,7 +36,7 @@ pipBtn.addEventListener("click", async function () {
 
 Notice how we have used async function in event listener because the process of requesting a PIP window is asynchronous.
 
-We select the pipContainer and container beforehand because pipContainer is what we are going to append in the PIP window and are going to reappend it in the container element after the pip window is closed.
+We select the timer element and container beforehand because timer element is what we are going to append in the PIP window and are going to reappend it in the container element after the pip window is closed.
 
 Inside of the event listener function we can start writing the code to implement PIP mode.
 
@@ -69,7 +69,7 @@ Remeber the value in the option object accepts height and width as number and no
 
 Also the pipWindow value we receive from the promise can be considered equivalent to the global "window" object but for the PIP window.
 
-To show this can get the width of the PIP window just like a how we can with the global window object.
+To show this, we can get the width of the PIP window just like a how we can with the global window object.
 
 ```javascript
 console.log(pipWindow.innerHeight, pipWindow.innerWidth);
@@ -90,7 +90,7 @@ let options = {
 let pipWindow = await documentPictureInPicture.requestWindow(options);
 
 //apending the pipContainer
-pipWindow.document.body.append(pipContainer);
+pipWindow.document.body.append(timer);
 ```
 
 It will append the pipContainer to the pipWindow body.
@@ -127,14 +127,14 @@ let style = document.createElement("link");
 style.rel = "stylesheet";
 style.href = document.styleSheets[0].href;
 pipWindow.document.head.append(style);
-pipWindow.document.body.append(pipContainer);
+pipWindow.document.body.append(stopwatch);
 ```
 
 Now this is enough for us to get this result.
 
 ![Application image](./img/web2.jpg)
 
-Now we need to append the pipContainer back to the originating window body when the PIP window closes.
+Now we need to append the timer element back to the originating window body when the PIP window closes.
 
 The PIP window has event "onpagehide" that is executed when the PIP window is closed.
 
@@ -142,8 +142,19 @@ When the PIP window closes we are going to append it back to the container we se
 
 ```javascript
 pipWindow.addEventListener("pagehide", function () {
-  container.append(pipContainer);
+  container.append(timer);
 });
+```
+
+### Closing a PIP window if they click on the pipButton
+
+If the pipWindow is not active the documentPictureInPicture.window value is null. However if it is active then it will have the value of the pipWindow object. Which we can use to check if the window is active and apply the .close() method.
+
+```javascript
+if (documentPictureInPicture.window) {
+  documentPictureInPicture.window.close();
+  return;
+}
 ```
 
 This is enough for you to get started to use document Picture-in-Picture API.
